@@ -1,0 +1,40 @@
+{
+    "version": 1,
+    "formatters": {
+        "default": {
+            "format": "%(asctime)s - %(name)-12s - %(levelname)-8s - %(message)s"
+        },
+        "simple": {
+            "format": "%(asctime)s - %(levelname)-8s - %(message)s"
+        }
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "level": "DEBUG",
+            "formatter": "simple"
+        },
+        "rotating_file": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "level": "DEBUG",
+            "formatter": "default",
+            "filename": "my_app_log_file.log",
+            "maxBytes": 5242880,
+            "backupCount": 10
+        }
+    },
+    "loggers": {
+        "only_file": {
+            "handlers": ["rotating_file"],
+            "level": "ERROR"
+        },
+        "only_console": {
+            "handlers": ["console"],
+            "level": "DEBUG"
+        },
+        "file_and_console": {
+            "handlers": ["console", "rotating_file"],
+            "level": "DEBUG"
+        }
+    }
+}
