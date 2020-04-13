@@ -4,16 +4,16 @@ import logging.handlers
 import logging.config
 
 
-
 CONSOLE_FORMATTER = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 FILE_FORMATTER = logging.Formatter("%(asctime)s — %(name)-12s — %(levelname)-8s — %(message)s")
 LOG_FILENAME = 'file_rotating_logging.log'
 LOGGING_CONFIG_FILE = 'logging.json'
+LOGGER_NAME = 'console_and_file_logger'
 
 
 def get_console_and_file_logger(logger_level='DEBUG', console_level='DEBUG', file_level="ERROR"):
     # Создаем логгер
-    cf_logger = logging.getLogger('console_and_file_logger')
+    cf_logger = logging.getLogger(LOGGER_NAME)
     cf_logger.setLevel(logger_level)
 
     # Создаем обработчик, отправляющий сообщения в консоль
